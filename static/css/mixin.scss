@@ -1,0 +1,34 @@
+.display-inline-block {
+  display: inline-block;
+}
+.display-flex {
+  display: flex;
+}
+.full-screen {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.position-raletive {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+.position-fixed {
+  position: fixed;
+}
+.text-align-center {
+  text-align: center;
+}
+.one-line {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
