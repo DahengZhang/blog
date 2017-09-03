@@ -16,7 +16,7 @@ ToastConstructor.prototype.close = function () {
   }, 600)
 }
 
-let toast = (options) => {
+let ShowToast = (options) => {
   if (options && typeof options === 'object') {
     instance.iConClass = options.iConClass || 'icon-notification'
     instance.tip = options.tip || '警告'
@@ -38,10 +38,10 @@ let toast = (options) => {
   instance.visible = true
 }
 
-let hideToast = (options) => {
+let HideToast = (options) => {
   if (instance.visible) {
     instance.close()
   }
 }
 
-export {toast, hideToast}
+export {ShowToast, HideToast}

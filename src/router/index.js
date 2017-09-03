@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login/login'
-import Register from '@/components/Register/register'
-import Main from '@/components/Main/main'
-import Detail from '@/components/Detail/detail'
-import Publish from '@/components/Publish/publish'
-import Mine from '@/components/Mine/mine'
-import Music from '@/components/Music/music'
-import NotFound from '@/components/NotFound/not-found'
+import Login from '@/views/Login/login'
+import Register from '@/views/Register/register'
+import Main from '@/views/Main/main'
+import Detail from '@/views/Detail/detail'
+import Publish from '@/views/Publish/publish'
+import Mine from '@/views/Mine/mine'
+import Music from '@/views/Music/music'
+import NotFound from '@/views/NotFound/not-found'
 
 Vue.use(Router)
 
@@ -16,7 +16,7 @@ const routes = [{
   name: 'Login',
   component: Login,
   meta: {
-    back: false
+    back: true
   }
 }, {
   path: '/register',

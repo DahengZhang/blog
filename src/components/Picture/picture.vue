@@ -2,7 +2,7 @@
   <div id="picture">
     <div class="middle-wrapper position-raletive">
       <div class="picture-wrapper position-absolute">
-        <img @click="bigPicture" class="picture" :src="typeof picSrc === 'string'?'http://192.168.241.15:3000/'+picSrc:'http://192.168.241.15:3000/'+picSrc[0]" alt="图">
+        <img @click.stop="clickPicture" class="picture" :src="typeof picSrc === 'string'?'http://192.168.241.15:3000/'+picSrc:'http://192.168.241.15:3000/'+picSrc[0]" onerror="javascript: this.src='http://192.168.241.15:3000/default-header.jpg';" alt="图">
       </div>
     </div>
   </div>
@@ -18,8 +18,8 @@ export default {
     }
   },
   methods: {
-    bigPicture () {
-      this.$emit('bigPicture', this.picSrc)
+    clickPicture () {
+      this.$emit('clickPicture', this.picSrc)
     }
   }
 }
@@ -28,6 +28,8 @@ export default {
 <style lang="scss" scoped>
 #picture {
   width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
   .middle-wrapper {
     width: 100%;
     padding-top: 100%;
@@ -36,7 +38,6 @@ export default {
       right: 0;
       bottom: 0;
       left: 0;
-      overflow: hidden;
       .picture {
         width: 100%;
         height: 100%;

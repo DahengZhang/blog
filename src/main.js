@@ -14,8 +14,10 @@ import '&/css/icon'
 
 import Header from '@/components/Header/header'
 import Picture from '@/components/Picture/picture'
+import Scroll from '@/components/Scroll/scroll'
+
 import Popup from '@/components/Popup'
-import {toast, hideToast} from '@/components/Toast'
+import {ShowToast, HideToast} from '@/components/Toast'
 
 Vue.config.productionTip = false
 
@@ -30,13 +32,19 @@ router.beforeEach((to, from, next) => {
 
 Vue.component('vHeader', Header)
 Vue.component('vPicture', Picture)
+Vue.component('vScroll', Scroll)
 
-Vue.prototype.Popup = Popup
-Vue.prototype.toast = toast
-Vue.prototype.hideToast = hideToast
-Vue.prototype.$http = Axios
-Vue.prototype.BScroll = BScroll
-Vue.prototype.Moment = window.Moment = Moment
+// 公共组件
+Vue.prototype.$Popup = Popup
+Vue.prototype.$Toast = ShowToast
+Vue.prototype.$HideToast = HideToast
+
+// Axios 三方Ajax请求插件
+Vue.prototype.$Http = window.$Http = Axios
+// Better-Scroll 三方滚动插件
+Vue.prototype.$BScroll = BScroll
+// Moment 三方时间格式化插件
+Vue.prototype.$Moment = window.$Moment = Moment
 
 /* eslint-disable no-new */
 new Vue({

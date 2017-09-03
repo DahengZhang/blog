@@ -5,15 +5,20 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    markState: false,
-    transitionName: 'slide-left'
+    transitionName: 'slide-left',
+    userInfo: {}
   },
   mutations: {
-    setBall (state, target) {
-      state.markState = target
-    },
     setTransitionName (state, target) {
       state.transitionName = target
+    },
+    saveUserInfo (state, target) {
+      sessionStorage.setItem('iCainBlogUserInfo', JSON.stringify(target))
+      state.userInfo = target
+    },
+    dropUserInfo (state) {
+      sessionStorage.removeItem('iCainBlogUserInfo')
+      state.userInfo = {}
     }
   }
 })

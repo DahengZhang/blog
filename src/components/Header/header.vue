@@ -1,8 +1,9 @@
 <template>
   <div id="header">
-    <span @click.once="back()" class="icon icon-arrow-left2 position-absolute"></span>
+    <span v-if="back" @click="goBack()" class="icon icon-arrow-left2 position-absolute"></span>
+    <v-picture v-if="header" :picSrc="user" @clickPicture="clickPicture" class="user position-absolute"></v-picture>
     <span class="title">{{title}}</span>
-    <span @click="control" v-if="showSendBtn" class="icon icon-rocket position-absolute"></span>
+    <span @click="control" v-if="showSendBtn" class="icon position-absolute" :class="btnClass"></span>
   </div>
 </template>
 
@@ -14,18 +15,37 @@
         type: String,
         required: true
       },
+      back: {
+        type: Boolean,
+        default: true
+      },
       showSendBtn: {
         type: Boolean,
         default: false
+      },
+      btnClass: {
+        type: String,
+        default: null
+      },
+      header: {
+        type: Boolean,
+        default: false
+      },
+      user: {
+        type: String,
+        default: ''
       }
     },
     computed: {},
     methods: {
-      back () {
+      goBack () {
         this.$router.back()
       },
       control () {
         this.$emit('controlEvent')
+      },
+      clickPicture () {
+        this.$emit('clickPicture')
       }
     }
   }
@@ -36,6 +56,7 @@
     width: 100%;
     height: 45px;
     line-height: 45px;
+    background-color: #FFFFFF;
     position: relative;
     text-align: center;
     font-size: 0;
@@ -54,6 +75,13 @@
           color: #CCCCCC;
         }
       }
+    }
+    .user {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
     }
     .title {
       font-size: 16px;

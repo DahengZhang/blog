@@ -1,6 +1,6 @@
 <template>
   <div id="publish">
-    <v-header title="发布文章" :showSendBtn="true" @controlEvent="publish"></v-header>
+    <v-header title="发布文章" :showSendBtn="true" :btnClass="'icon-rocket'" @controlEvent="publish"></v-header>
     <div class="content-wrapper">
       <input class="title" type="text" v-model="title" placeholder="文章标题">
       <textarea class="content" v-model="content" placeholder="分享你刚刚撰写的故事..."></textarea>
@@ -64,7 +64,7 @@
       selectFileChange (e) {
         const files = e.target.files || e.dataTransfer.files
         if (this.images.length >= 6) {
-          this.toast({iConClass: 'icon-cross', waiting: false, tip: '最多上传6张图片'})
+          this.$Toast({iConClass: 'icon-cross', waiting: false, tip: '最多上传6张图片'})
           return false
         }
         this.getImages(files)
@@ -74,11 +74,11 @@
           return false
         }
         if (typeof FileReader === 'undefined') {
-          this.toast({iConClass: 'icon-cross', waiting: false, tip: '您的浏览器无法上传'})
+          this.$Toast({iConClass: 'icon-cross', waiting: false, tip: '您的浏览器无法上传'})
           return false
         }
         if (files[0].size > 1048576) {
-          this.toast({iConClass: 'icon-cross', waiting: false, tip: '图片大于1M'})
+          this.$Toast({iConClass: 'icon-cross', waiting: false, tip: '图片大于1M'})
           return false
         }
         const _this = this
@@ -104,48 +104,62 @@
         this.showSheet = false
       },
       uploadImages (files) {
-        this.toast({iConClass: 'icon-spinner10', waiting: true, tip: '少女祈祷中...'})
+        this.$Toast({iConClass: 'icon-spinner10', waiting: true, tip: '少女祈祷中...'})
         return new Promise((resolve, reject) => {
-          this.$http.post('http://192.168.241.15:3000/api/upload', {images: files}).then(response => {
+          this.$Http.post('http://192.168.241.15:3000/api/upload', {images: files}).then(response => {
+            if (response.data.status === 0) {
+              reject(response)
+            }
             resolve(response.data)
-          }, response => {
-            reject(false)
+          }).catch(response => {
+            reject(response)
           })
         })
       },
       publishArticle (title, content, images) {
+        console.log(3)
         return new Promise((resolve, reject) => {
-          this.$http.post('http://192.168.241.15:3000/api/article/save', {title: title, content: content, images: images}).then(response => {
+          this.$Http.post('http://192.168.241.15:3000/api/article/save', {title: title, content: content, images: images}).then(response => {
+            if (response.data.status === 0) {
+              reject(response)
+            }
             resolve(response.data)
-          }, response => {
-            reject(false)
+          }).catch(response => {
+            reject(response)
           })
         })
       },
       publish () {
         if (this.title === '') {
-          this.toast({iConClass: 'icon-cross', waiting: false, tip: '请填写标题'})
+          this.$Toast({iConClass: 'icon-cross', waiting: false, tip: '请填写标题'})
           return
         }
         if (this.content === '') {
-          this.toast({iConClass: 'icon-cross', waiting: false, tip: '请填写内容'})
+          this.$Toast({iConClass: 'icon-cross', waiting: false, tip: '请填写内容'})
           return
         }
-        this.Popup({title: '提示', content: '确定发布此篇文章？', confirmButton: '发布'}).then(response => {
+        this.$Popup({title: '提示', content: '确定发布此篇文章？', confirmButton: '发布'}).then(response => {
           this.uploadImages(this.images).then(response => {
+            console.log(0)
             return this.publishArticle(this.title, this.content, response.imagesUrl)
           }).then(response => {
-            this.hideToast()
-            this.toast({iConClass: 'icon-checkmark', waiting: false, tip: '发布成功'})
+            console.log(1)
+            this.$HideToast()
+            this.$Toast({iConClass: 'icon-checkmark', waiting: false, tip: '发布成功'})
             this.$router.back()
           }).catch(response => {
-            this.toast({iConClass: 'icon-cross', waiting: false, tip: '发布失败'})
+            console.log('2' + JSON.stringify(response))
+            this.$Toast({iConClass: 'icon-cross', waiting: false, tip: response.data ? response.data.message : '发布失败'})
           })
         }).catch(response => {})
       }
     },
     beforeRouteEnter (to, from, next) {
-      next()
+      if (sessionStorage.getItem('iCainBlogUserInfo')) {
+        next()
+      } else {
+        next('/login')
+      }
     }
   }
 </script>
@@ -154,6 +168,8 @@
 #publish {
   .content-wrapper {
     width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
     .title {
       width: 100%;
       height: 35px;
