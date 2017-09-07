@@ -22,7 +22,9 @@ import {ShowToast, HideToast} from '@/components/Toast'
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  if (from.meta.back) {
+  if (from.path === '/detail' && to.path === '/login') {
+    store.commit('setTransitionName', 'slide-left')
+  } else if (from.meta.back) {
     store.commit('setTransitionName', 'slide-right')
   } else {
     store.commit('setTransitionName', 'slide-left')
@@ -33,6 +35,8 @@ router.beforeEach((to, from, next) => {
 Vue.component('vHeader', Header)
 Vue.component('vPicture', Picture)
 Vue.component('vScroll', Scroll)
+
+Moment.locale('zh-CN')
 
 // 公共组件
 Vue.prototype.$Popup = Popup

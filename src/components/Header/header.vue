@@ -1,9 +1,9 @@
 <template>
   <div id="header">
-    <span v-if="back" @click="goBack()" class="icon icon-arrow-left2 position-absolute"></span>
-    <v-picture v-if="header" :picSrc="user" @clickPicture="clickPicture" class="user position-absolute"></v-picture>
+    <span v-if="back" @click="$router.back()" class="icon icon-back back position-absolute"></span>
+    <v-picture v-if="picture || picture === ''" :picSrc="picture" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" @clickPicture="clickPicture" class="picture position-absolute"></v-picture>
     <span class="title">{{title}}</span>
-    <span @click="control" v-if="showSendBtn" class="icon position-absolute" :class="btnClass"></span>
+    <span v-if="button || button === ''" @click="clickButton" class="icon button position-absolute" :class="button"></span>
   </div>
 </template>
 
@@ -17,32 +17,21 @@
       },
       back: {
         type: Boolean,
-        default: true
-      },
-      showSendBtn: {
-        type: Boolean,
         default: false
       },
-      btnClass: {
+      button: {
         type: String,
         default: null
       },
-      header: {
-        type: Boolean,
-        default: false
-      },
-      user: {
+      picture: {
         type: String,
-        default: ''
+        default: null
       }
     },
     computed: {},
     methods: {
-      goBack () {
-        this.$router.back()
-      },
-      control () {
-        this.$emit('controlEvent')
+      clickButton () {
+        this.$emit('clickButton')
       },
       clickPicture () {
         this.$emit('clickPicture')
@@ -56,45 +45,36 @@
     width: 100%;
     height: 45px;
     line-height: 45px;
-    background-color: #FFFFFF;
+    background-color: #81E2CE;
     position: relative;
     text-align: center;
     font-size: 0;
+    color: #FFFFFF;
     .icon {
       font-size: 24px;
       position: absolute;
-      &.icon-arrow-left2 {
-        top: 10px;
-        left: 15px;
+      &.back {
+        top: 12px;
+        left: 10px;
       }
-      &.icon-rocket {
-        font-size: 18px;
-        top: 15px;
-        right: 20px;
-        &:active {
-          color: #CCCCCC;
-        }
+      &.button {
+        top: 12px;
+        right: 10px;
+      }
+      &:active {
+        color: #CCCCCC;
       }
     }
-    .user {
+    .picture {
       width: 35px;
       height: 35px;
+      border: 1px solid #FFFFFF;
       border-radius: 50%;
-      top: 5px;
-      left: 5px;
+      top: 4px;
+      left: 4px;
     }
     .title {
       font-size: 16px;
-    }
-    &::after {
-      position: absolute;
-      content: " ";
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      transform: scaleY(.5);
-      background-color: #CCCCCC;
     }
   }
 </style>

@@ -9,7 +9,7 @@ let instance = new PopupConstructor({
 
 let popup = (options) => {
   if (options && typeof options === 'object') {
-    instance.iConClass = options.iConClass || 'icon-notification'
+    instance.iConClass = options.iConClass || 'icon-warning'
     instance.title = options.title || '警告'
     instance.content = options.content || '确认操作？'
     instance.cancelButton = options.cancelButton || '取消'

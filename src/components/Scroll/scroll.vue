@@ -60,5 +60,6 @@ export default {
 #scroll {
   height: 100%;
   overflow: hidden;
+  background-color: #F5F5F5;
 }
 </style>

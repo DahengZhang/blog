@@ -27,7 +27,7 @@ export default {
   props: {
     iConClass: {
       type: String,
-      default: 'icon-notification'
+      default: 'icon-warning'
     },
     title: {
       type: String,

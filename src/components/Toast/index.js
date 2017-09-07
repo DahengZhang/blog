@@ -18,7 +18,7 @@ ToastConstructor.prototype.close = function () {
 
 let ShowToast = (options) => {
   if (options && typeof options === 'object') {
-    instance.iConClass = options.iConClass || 'icon-notification'
+    instance.iConClass = options.iConClass || 'icon-warning'
     instance.tip = options.tip || '警告'
     if (!options.waiting || options.waiting === false) {
       instance.waiting = false

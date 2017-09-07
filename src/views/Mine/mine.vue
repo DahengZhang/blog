@@ -1,6 +1,6 @@
 <template>
   <div id="mine">
-    <v-picture :picSrc="user.picture?user.picture:''" @clickPicture="login" class="user-picture"></v-picture>
+    <v-picture :picSrc="user.picture?user.picture:''" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" @clickPicture="login()" class="user-picture"></v-picture>
     <div v-if="user.name" class="user-name">{{user.name}}</div>
   </div>
 </template>
@@ -28,7 +28,7 @@
       },
       logout () {
         return new Promise((resolve, reject) => {
-          this.$Http.post('http://192.168.241.15:3000/api/user/logout').then(response => {
+          this.$Http.post('http://localhost:3000/api/user/logout').then(response => {
             resolve()
           }).catch(response => {})
         })
@@ -44,14 +44,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #F5F5F5;
+  background-color: #81E2CE;
   .user-picture {
     width: 40%;
+    border: 2px solid #FFFFFF;
     border-radius: 50%;
   }
   .user-name {
     margin-top: 20px;
     font-size: 20px;
+    color: #FFFFFF;
   }
 }
 </style>

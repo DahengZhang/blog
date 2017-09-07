@@ -15,7 +15,7 @@ export default {
   props: {
     iConClass: {
       type: String,
-      default: 'icon-notification'
+      default: 'icon-warning'
     },
     tip: {
       type: String,

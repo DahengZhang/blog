@@ -2,7 +2,7 @@
   <div id="picture">
     <div class="middle-wrapper position-raletive">
       <div class="picture-wrapper position-absolute">
-        <img @click.stop="clickPicture" class="picture" :src="typeof picSrc === 'string'?'http://192.168.241.15:3000/'+picSrc:'http://192.168.241.15:3000/'+picSrc[0]" onerror="javascript: this.src='http://192.168.241.15:3000/default-header.jpg';" alt="图">
+        <img @click.stop="clickPicture" class="picture" :src="typeof picSrc === 'string'?'http://localhost:3000/'+picSrc:'http://localhost:3000/'+picSrc[0]" :onerror="errorSrc" alt="图">
       </div>
     </div>
   </div>
@@ -14,6 +14,10 @@ export default {
   props: {
     picSrc: {
       type: [String, Array],
+      required: true
+    },
+    errorSrc: {
+      type: String,
       required: true
     }
   },

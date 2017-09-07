@@ -42,3 +42,7 @@
   width: 100%;
   height: calc(100% - 45px) !important;
 }
+#header.comment + .content-wrapper {
+  width: 100%;
+  height: calc(100% - 95px) !important;
+}
