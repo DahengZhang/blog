@@ -60,6 +60,11 @@
         }
       }
     },
+    computed: {
+      userInfo () {
+        return this.$store.state.userInfo
+      }
+    },
     methods: {
       selectFileChange (e) {
         const files = e.target.files || e.dataTransfer.files
@@ -118,7 +123,7 @@
       },
       publishArticle (title, content, images) {
         return new Promise((resolve, reject) => {
-          this.$Http.post('http://localhost:3000/api/article/save', {title: title, content: content, images: images}).then(response => {
+          this.$Http.post('http://localhost:3000/api/article/save', {title: title, author: this.userInfo, content: content, images: images}).then(response => {
             if (response.data.status === 0) {
               reject(response)
             }

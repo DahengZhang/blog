@@ -66,7 +66,7 @@
           this.commentList = response.data.value
           this.comment = ''
         }).catch(response => {
-          console.log('请求失败：' + response.data)
+          console.log('请求失败：' + response)
         })
       }
     },

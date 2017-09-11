@@ -14,7 +14,7 @@
             </div>
             <div class="title" :class="{'explicit-height': item.images.length > 0}">{{item.title}}</div>
             <div class="more display-flex">
-              <span class="icon icon-save"></span>{{item.collections}}<span class="icon icon-message"></span>{{item.comment}}<span class="icon icon-heart"></span>{{item.like}}
+              <span class="icon icon-read"></span>{{item.read}}<span class="icon icon-message"></span>{{item.comment}}<span class="icon icon-heart"></span>{{item.like}}
             </div>
           </div>
           <div v-if="item.images.length > 0" class="picture">
