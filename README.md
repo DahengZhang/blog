@@ -12,7 +12,7 @@
 
 ## 技术栈
 
-> Vue + Vuex + Vue-router + Axios + Better-Scroll + Sass + Moment
+> ECMAScript 6 + Vue + Webpack + Vuex + Vue-router + Axios + Better-Scroll + Sass + Moment
 
 > 样式组件参考 [饿了么下的mint-ui](https://github.com/ElemeFE/mint-ui) 与 [王大虎先生的vonic](https://github.com/wangdahoo/vonic) 编写的自己的一套UI组件
 
