@@ -42,4 +42,8 @@
 
 > 我会一点点完善用户体验部分，增加更多的功能
 
-## 项目图片正在准备中...
+## 项目展示
+
+![register.gif](./demogif/register.gif)
+
+![publish.gif](./demogif/publish.gif)
