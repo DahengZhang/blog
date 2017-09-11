@@ -46,4 +46,6 @@
 
 ![register.gif](./demogif/register.gif)
 
+![comment.gif](./demogif/comment.gif)
+
 ![publish.gif](./demogif/publish.gif)
