@@ -2,7 +2,7 @@
   <div id="picture">
     <div class="middle-wrapper position-raletive">
       <div class="picture-wrapper position-absolute">
-        <img @click.stop="clickPicture" class="picture" :src="typeof picSrc === 'string'?'http://localhost:3000/'+picSrc:'http://localhost:3000/'+picSrc[0]" :onerror="errorSrc" alt="图">
+        <img @click.stop="clickPicture" class="picture" :src="typeof picSrc === 'string'?'http://dahengzhang.club/'+picSrc:'http://dahengzhang.club/'+picSrc[0]" :onerror="errorSrc" alt="图">
       </div>
     </div>
   </div>

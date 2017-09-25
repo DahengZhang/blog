@@ -5,7 +5,7 @@
       <div class="wrapper">
         <div class="title display-flex flex-center">{{articleInfo.title}}</div>
         <div class="user display-flex">
-          <v-picture :picSrc="articleInfo.author ? articleInfo.author.picture : ''" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" class="picture"></v-picture>
+          <v-picture :picSrc="articleInfo.author ? articleInfo.author.picture : ''" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-header.png\''" class="picture"></v-picture>
           <div class="more">
             <div class="name">{{articleInfo.author ? articleInfo.author.name : '未知用户'}}</div>
             <div class="time">{{formatDate(articleInfo.time)}}</div>
@@ -14,13 +14,13 @@
         <div class="content" v-html="toHtml(articleInfo.content)"></div>
         <div v-if="articleInfo.images && articleInfo.images.length > 0" class="images">
           <div v-for="image in articleInfo.images" class="image-item">
-            <v-picture :picSrc="image" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-picture-big.png\''" class="picture"></v-picture>
+            <v-picture :picSrc="image" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-picture-big.png\''" class="picture"></v-picture>
           </div>
         </div>
         <!-- <div class="like">点赞</div> -->
         <div class="comment">
           <div v-for="item in commentList" class="comment-item">
-            <div class="user display-flex"><v-picture :picSrc="item.author.picture" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" class="picture"></v-picture><span class="name">{{item.author.name}}</span><span class="time">{{item.time | formatTime}}</span></div>
+            <div class="user display-flex"><v-picture :picSrc="item.author.picture" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-header.png\''" class="picture"></v-picture><span class="name">{{item.author.name}}</span><span class="time">{{item.time | formatTime}}</span></div>
             <div class="content">{{item.content}}</div>
           </div>
         </div>
@@ -62,7 +62,7 @@
         if (this.comment === '') {
           return
         }
-        $Http.post('http://localhost:3000/api/article/comment', {articleId: this.$route.query.id, author: this.userInfo, content: this.comment}).then(response => {
+        $Http.post('http://dahengzhang.club/api/article/comment', {articleId: this.$route.query.id, author: this.userInfo, content: this.comment}).then(response => {
           this.commentList = response.data.value
           this.comment = ''
         }).catch(response => {
@@ -85,7 +85,7 @@
     beforeRouteEnter (to, from, next) {
       let getArticleInfo = new Promise((resolve, reject) => {
         /* eslint-disable */
-        $Http.get('http://localhost:3000/api/article/findById', {params: {id: to.query.id}}).then(response => {
+        $Http.get('http://dahengzhang.club/api/article/findById', {params: {id: to.query.id}}).then(response => {
           resolve(response.data.value)
         }).catch(response => {
           reject(response)
@@ -93,7 +93,7 @@
       })
       let getCommentList = new Promise((resolve, reject) => {
         /* eslint-disable */
-        $Http.get('http://localhost:3000/api/article/comment', {params: {articleId: to.query.id}}).then(response => {
+        $Http.get('http://dahengzhang.club/api/article/comment', {params: {articleId: to.query.id}}).then(response => {
           resolve(response.data.value)
         }).catch(response => {
           reject(response)
@@ -188,6 +188,7 @@
             padding: 0 0 0 60px;
             margin-top: -15px;
             font-size: 15px;
+            line-height: 20px;
           }
         }
       }

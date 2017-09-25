@@ -111,7 +111,7 @@
       uploadImages (files) {
         this.$Toast({iConClass: 'icon-loading', waiting: true, tip: '少女祈祷中...'})
         return new Promise((resolve, reject) => {
-          this.$Http.post('http://localhost:3000/api/upload', {images: files}).then(response => {
+          this.$Http.post('http://dahengzhang.club/api/upload', {images: files}).then(response => {
             if (response.data.status === 0) {
               reject(response)
             }
@@ -123,7 +123,7 @@
       },
       publishArticle (title, content, images) {
         return new Promise((resolve, reject) => {
-          this.$Http.post('http://localhost:3000/api/article/save', {title: title, author: this.userInfo, content: content, images: images}).then(response => {
+          this.$Http.post('http://dahengzhang.club/api/article/save', {title: title, author: this.userInfo, content: content, images: images}).then(response => {
             if (response.data.status === 0) {
               reject(response)
             }

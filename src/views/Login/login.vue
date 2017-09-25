@@ -96,7 +96,7 @@
           this.$Toast({iConClass: 'icon-false', waiting: false, tip: '两次密码不一致'})
           return
         }
-        this.$Http.post('http://localhost:3000/api/user/register', {phone: this.register.account, password: this.register.password}).then(response => {
+        this.$Http.post('http://dahengzhang.club/api/user/register', {phone: this.register.account, password: this.register.password}).then(response => {
           if (response.data.status !== 1) {
             this.$Toast({iConClass: 'icon-false', waiting: false, tip: response.data.message})
             return
@@ -117,7 +117,7 @@
           this.$Toast({iConClass: 'icon-false', waiting: false, tip: '请填写完整'})
           return
         }
-        this.$Http.get('http://localhost:3000/api/user/login', {params: {phone: this.login.account, password: this.login.password}}).then(response => {
+        this.$Http.get('http://dahengzhang.club/api/user/login', {params: {phone: this.login.account, password: this.login.password}}).then(response => {
           if (response.data.status !== 1) {
             this.$Toast({iConClass: 'icon-false', waiting: false, tip: response.data.message})
             return

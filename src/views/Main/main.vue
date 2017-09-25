@@ -6,7 +6,7 @@
         <div v-for="item in articleList" @click="read(item._id)" class="list-item display-flex position-raletive">
           <div class="description">
             <div class="author display-flex">
-              <v-picture :picSrc="item.author.picture?item.author.picture:''" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" class="header-picture"></v-picture>
+              <v-picture :picSrc="item.author.picture?item.author.picture:''" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-header.png\''" class="header-picture"></v-picture>
               <div class="more-info">
                 <div class="name">{{item.author.name}}</div>
                 <div class="time">{{item.time | formatTime}}</div>
@@ -18,7 +18,7 @@
             </div>
           </div>
           <div v-if="item.images.length > 0" class="picture">
-            <v-picture :picSrc="item.images" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-picture.png\''" @clickPicture="bigPicture"></v-picture>
+            <v-picture :picSrc="item.images" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-picture.png\''" @clickPicture="bigPicture"></v-picture>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
     },
     methods: {
       getArticleList (pageNumber, pageSize) {
-        this.$Http.get('http://localhost:3000/api/article/find', {params: {pageNumber: pageNumber, pageSize: pageSize}}).then(response => {
+        this.$Http.get('http://dahengzhang.club/api/article/find', {params: {pageNumber: pageNumber, pageSize: pageSize}}).then(response => {
           if (response.data.status !== 1) {
             this.$Toast({iConClass: 'icon-success', waiting: false, tip: response.data.message})
             return

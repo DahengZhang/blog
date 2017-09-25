@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <span v-if="back" @click="$router.back()" class="icon icon-back back position-absolute"></span>
-    <v-picture v-if="picture || picture === ''" :picSrc="picture" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" @clickPicture="clickPicture" class="picture position-absolute"></v-picture>
+    <v-picture v-if="picture || picture === ''" :picSrc="picture" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-header.png\''" @clickPicture="clickPicture" class="picture position-absolute"></v-picture>
     <span class="title">{{title}}</span>
     <span v-if="button || button === ''" @click="clickButton" class="icon button position-absolute" :class="button"></span>
   </div>

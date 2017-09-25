@@ -1,6 +1,6 @@
 <template>
   <div id="mine">
-    <v-picture :picSrc="user.picture?user.picture:''" :errorSrc="'javascript: this.src=\'http://localhost:3000/default-header.png\''" @clickPicture="login()" class="user-picture"></v-picture>
+    <v-picture :picSrc="user.picture?user.picture:''" :errorSrc="'javascript: this.src=\'http://dahengzhang.club/default-header.png\''" @clickPicture="login()" class="user-picture"></v-picture>
     <div v-if="user.name" class="user-name">{{user.name}}</div>
   </div>
 </template>
@@ -28,7 +28,7 @@
       },
       logout () {
         return new Promise((resolve, reject) => {
-          this.$Http.post('http://localhost:3000/api/user/logout').then(response => {
+          this.$Http.post('http://dahengzhang.club/api/user/logout').then(response => {
             resolve()
           }).catch(response => {})
         })
